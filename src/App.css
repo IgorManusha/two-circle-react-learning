@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 50px;
+  background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
+  animation: l24 1s infinite alternate linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.loader::before {
+  content: "Loading...";
+  line-height: 1em;
+  color: orange;
+  background: inherit;
+  background-image: radial-gradient(circle closest-side, #fff 94%, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes l24 {
+  100% {
+    background-position: left
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #333852;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  gap: 22px;
+  font-size: 28px;
+}
+
+a {
+
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+a:hover {
+  text-decoration: underline;
+  color: rgb(255, 166, 0);
+  transform: scale(1.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.active {
+  color: rgb(249, 203, 118);
+  text-decoration: underline;
+}
+
+.active-myclass {
+  color: rgb(16, 212, 29);
+  text-decoration: underline;
 }

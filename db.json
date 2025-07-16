@@ -1,13 +1,22 @@
 {
   "posts": [
-    { "id": "1", "name": "Igor", "views": 100 },
-    { "id": "2", "name": "Dasha", "views": 200 }
-  ],
-  "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+    {
+      "id": "1",
+      "name": "Igor",
+      "lastName": "Manusha",
+      "profesion": "Frontend Developer"
+    },
+    {
+      "name": "Yuliya",
+      "lastName": "Procenko",
+      "profesion": "Product manager",
+      "id": "gj4CnCA"
+    },
+    {
+      "name": "Yuliya",
+      "lastName": "Procenko",
+      "profesion": "Product manager",
+      "id": "khSFTf0"
+    }
+  ]
 }

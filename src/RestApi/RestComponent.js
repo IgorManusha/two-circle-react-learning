@@ -1,25 +1,57 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { addContact, getDataList } from "./api";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Fragment } from "react";
 
 const RestComponent = () => {
-  const [data, setData] = useState();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    const dbData = async () => {
-      const response = await axios.get("http://localhost:3030/posts");
-      const responseData = await response.data;
-      setData(responseData);
+  console.log(location);
+
+  const { data, isFetching, refetch } = useQuery({
+    queryKey: ["contactsList"],
+    queryFn: getDataList,
+  });
+
+  const { mutateAsync } = useMutation({
+    mutationFn: (payload) => addContact(payload),
+  });
+
+  const addNewContact = async () => {
+    const payload = {
+      name: "Yuliya",
+      lastName: "Procenko",
+      profesion: "Product manager",
     };
-    dbData();
-  }, []);
+    try {
+      await mutateAsync(payload);
+      await refetch();
+    } catch (error) {}
+  };
 
   return (
     <div>
-      {data ? (
-        data.map((element) => <h1 key={element.id}>{element.name}</h1>)
-      ) : (
-        <h1>Loadin...</h1>
-      )}
+      <button onClick={() => navigate(-1)}>return</button>
+      <ul>
+        {isFetching ? (
+          <div className="loader"></div>
+        ) : (
+          data.map((element) => (
+            <Fragment key={element.id}>
+              <li>
+                <p>
+                  {element.name} {element.profesion}
+                </p>
+              </li>
+              <Link style={{ color: "blue" }} to={`${element.id}`}>
+                Watch about this contact
+              </Link>
+            </Fragment>
+          ))
+        )}
+      </ul>
+      <button onClick={addNewContact}>add</button>
     </div>
   );
 };

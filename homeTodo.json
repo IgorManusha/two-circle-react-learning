@@ -1,0 +1,11 @@
+{
+  "todoRecords": [
+    {
+      "id": "1",
+      "title": "todo 1",
+      "description": "will be Frontend developer",
+      "checked": "false",
+      "creationDate": "13.04.86"
+    }
+  ]
+}
